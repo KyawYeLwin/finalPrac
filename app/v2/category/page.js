@@ -28,7 +28,7 @@ export default function Home() {
   ];
 
   const API_BASE = process.env.NEXT_PUBLIC_API_BASE;
-  console.log(`${API_BASE}/category`);
+  console.log(`/api/category`);
   async function fetchCategory() {
     const data = await fetch(`${APIBASE}/category`);
     const c = await data.json();

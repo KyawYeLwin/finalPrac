@@ -31,7 +31,7 @@ export default function Home() {
   const { register, handleSubmit, reset } = useForm();
 
   async function fetchCategory() {
-    const data = await fetch(`${API_BASE}/category`);
+    const data = await fetch(`/api/category`);
     const c = await data.json();
     const c2 = c.map((category) => {
       return {
@@ -49,7 +49,7 @@ export default function Home() {
   function handleCategoryFormSubmit(data) {
     if (editMode) {
       // Updating a category
-      fetch(`${API_BASE}/category`, {
+      fetch(`/api/category`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export default function Home() {
     }
 
     // Creating a new category
-    fetch(`${API_BASE}/category`, {
+    fetch(`/api/category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ export default function Home() {
     if (!confirm(`Are you sure to delete [${category.name}]`)) return;
 
     const id = category._id
-    await fetch(`${API_BASE}/category/${id}`, {
+    await fetch(`/api/category/${id}`, {
       method: "DELETE"
     })
     fetchCategory()

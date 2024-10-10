@@ -12,13 +12,13 @@ export default function Home() {
   const [editSnackId, setEditSnackId] = useState(null);
 
   async function fetchSnack() {
-    const data = await fetch(`${API_BASE}/snack`);
+    const data = await fetch(`/api/snack`);
     const c = await data.json();
     setSnack(c);
   }
 
   const createSnack = (data) => {
-    fetch(`${API_BASE}/snack`, {
+    fetch(`/api/snack`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function Home() {
   const deleteById = (id) => async () => {
     if (!confirm("Are you sure?")) return;
 
-    await fetch(`${API_BASE}/snack/${id}`, {
+    await fetch(`/api/snack/${id}`, {
       method: "DELETE",
     });
     fetchSnack();
@@ -38,7 +38,7 @@ export default function Home() {
 
   const updateById = (data) => {
     alert("update");
-    fetch(`${API_BASE}/snack/${editSnackId}`, {
+    fetch(`/api/snack/${editSnackId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
